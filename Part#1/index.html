@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>JS Lesson#3</title>
+    </head>
+    <body>
+       <h1>JS Урок 3</h1>
+        <script>
+            var 
+                InputValue      // Введенное число
+                ;
+            // END VAR ***************************
+
+            InputValue = parseInt(prompt('Введите число от 0 до 1000000'));
+            console.log('Введенное число: '+InputValue);
+            
+            alert(SimpleNumber(InputValue));
+            
+            function SimpleNumber(CheckedValue)
+            {
+                var
+                    Remain,         // Остаток от деления
+                    i,              // Счетчик цикла
+                    text            // Выводимый пользователю текст                
+                    ;
+                // END VAR ****************************************
+                
+                // Проверка ввода на принадлежность диапазону
+                if (CheckedValue >= 0 && CheckedValue <= 1000000)
+                {
+                    console.log('Введенное число '+CheckedValue+' принадлежит проверяемому диапазону');
+
+                    // В цикле DO -- WHILE производим деление до тех пор,
+                    // пока не получим нулевой остаток от деления, 
+                    // либо не переберем все числа от 2 до введенного минус 1
+                    // если в диапазоне чисел от 2 до введенного минус 1 окажется число,
+                    // которое нацело делит веденное число, значит веденное число 
+                    // не является простым, во всех остальных случаях - является
+
+                    i = 1;        
+                    do
+                    {
+                        i++;
+                        Remain = parseInt(CheckedValue % i);
+                    }
+                    while (Remain !== 0 && i<(CheckedValue-1))
+                    console.log('Остаток от деления: '+Remain+', делитель: '+i);
+
+                    if ((Remain !== 0) && (CheckedValue > 1))
+                    {
+                        text = 'Число ' + CheckedValue + ' является простым';
+                    }
+                    else
+                    {
+                        text = 'Число ' + CheckedValue + ' не является простым';
+                    }
+                    console.log(text);
+                }
+                else
+                {
+                    text = 'Недопустимый ввод!'
+                    console.log(text);
+                }
+                return text;
+            }
+        </script>
+    </body>
+</html>
